@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases</title>
+</head>
+<body>
+    <h1>Prueba Objeto</h1>
+    <br>
+    Texto<input type="text" name="cajonTexto" id="cajonTexto">
+    <br>
+    <p id="dolor" name="dolor"></p>
+    <button onclick="magia();">Por favor funca</button>
+    <script type="text/javascript">
+        class prueba{
+            constructor(texto){
+                this.mensaje=texto;
+            }
+        }
+        function magia(){
+            var foo=document.getElementById('cajonTexto').value;
+            let v1=new prueba(foo);
+            document.getElementById('dolor').innerHTML=v1.mensaje;
+        }
+    </script>
+    
+</body>
+</html>

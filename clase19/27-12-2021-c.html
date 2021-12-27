@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Prueba</h1>
+    <p>
+        valor 1: <input type="text" name="nom" id="v1"><br>
+        valor 2: <input type="text" name="nom" id="v2"><br>
+        <button onclick="agregar();">ingresar</button>
+    </p>
+    <p id="ar"></p>
+    <script type="text/javascript">
+        class elemento{
+            constructor(v1,v2){
+                this.valor1=v1;
+                this.valor2=v2;
+            }
+            suma(){
+                let sum=parseInt(this.valor1)+parseInt(this.valor2);
+                return sum;
+            }
+        }
+
+        function agregar(){
+            let v1=document.getElementById('v1').value;
+            let v2=document.getElementById('v2').value;
+            var ele=new elemento(v1,v2);
+            let res=ele.suma();
+            document.getElementById('ar').innerHTML=res;
+
+        }
+
+    </script>
+</body>
+</html>
