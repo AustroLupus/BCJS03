@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iva y Circumferencia</title>
+</head>
+<body>
+    <h1>IVA DE UNA BOLETA</h1>
+    Ingrese el valor bruto de la boleta:<input type="number" id="ivaBoleta" name="ivaBoleta"><br>
+    <p>El IVA corresponde a: <span id="resIva"></span></p>
+    <p>El total coresponde a: <span id="totMasIva"></span></p>
+    <button onclick="calciva();">Calcular Iva</button>
+    <hr noshade size="5">
+    <h1>Circumferencia</h1>
+    Ingrese el radio de la circumferencia: <input type="number" name="radioCirc" id="radioCirc"><br>
+    <p>El diametro de la circumferencia es: <span id="diam" name="diam"></span></p>
+    <p>El perimetro de la circumferencia es: <span id="peri" name="peri"></span></p>
+    <p>El área de la circumferencia es: <span id="area" name="area"></span></p>
+    <button onclick="calcCirc();">Calcular valores de circumferencia</button>
+    <script type="text/javascript">
+        const ivaRate=0.19;
+        class iva{  //declaracion de clase iva
+            constructor(v1){
+                this.bruto=v1;
+            }
+            mostrar(){ //calculo de iva
+                let brutoBoleta=parseInt(this.bruto,10);
+                return brutoBoleta*ivaRate;
+            }
+        }
+        class circulofeliz{   //declaracion de la clase para trabajar con el circulo
+            constructor(i1){
+                this.radio=i1;
+            }
+            circulificacion(){
+                const losResultados={}; //cree un objeto para poder extraerlo mas adelante con el return
+                let elRadio=parseInt(this.radio);
+                losResultados.diametro=elRadio*2; //pasando los resultados al objeto, lo mismo en los dos de abajo
+                losResultados.perimetro=2*Math.PI*elRadio;
+                losResultados.area=Math.PI*(elRadio**2);
+                return losResultados;
+
+            }
+        }
+        function calciva() {
+            let enBoleta=document.getElementById('ivaBoleta').value;
+            console.log("enBoleta="+enBoleta);
+            let coso=new iva();
+            coso.bruto=enBoleta;
+            document.getElementById('resIva').innerHTML=coso.mostrar();
+            document.getElementById('totMasIva').innerHTML=parseInt(enBoleta,10)+coso.mostrar();
+
+        }
+        function calcCirc() {
+            let valRadio=document.getElementById('radioCirc').value;
+            let res={}; //objeto nuevo que puedo manejar
+            let redondo = new circulofeliz();
+            redondo.radio=valRadio;
+            res=redondo.circulificacion(); //pasando el objeto de circulificacio a mi nuevo objeto
+            document.getElementById('diam').innerHTML=res.diametro; //rescatando los valores del objeto. Lo mismo abajo
+            document.getElementById('peri').innerHTML=res.perimetro;
+            document.getElementById('area').innerHTML=res.area;
+
+        }
+
+    </script>
+</body>
+</html>

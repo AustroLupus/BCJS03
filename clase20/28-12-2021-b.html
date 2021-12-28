@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejemplo objtos</h1>
+    Ingrese mombre: <input type="text" name="nom" id="nom"><br>
+    Ingrese edad: <input type="text" name="edad" id="edad"><br>
+    Ingrese direccion: <input type="text" name="dir" id="dir"><br>
+    <button onclick="cargar();">Cargar</button>
+    <p>
+        <table>
+            <tr>
+                <td>
+                    <table border="1" id="t1">
+
+                    </table>
+                </td>
+                <td>
+                    <table border="1" id="t2">
+
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </p>
+    <p id="ex"></p>
+    <p id="ax"></p>
+    <p id="ox"></p>
+    <script type="text/javascript">
+    
+        let listaEle=[];
+        let listaObj=[];
+
+    function cargar() {
+            let no=document.getElementById('nom').value;
+            let ed=document.getElementById('edad').value;
+            let di=document.getElementById('dir').value;
+            let ele=new elemento(no,ed,di);
+            let obja=obj;
+            obja.nom=no;
+            obja.edad=ed;
+            obja.dir=di;
+            listaEle.push(ele);
+            listaObj.push(obja);
+            mostrar();
+        }
+        function mostrar() {
+            let tex1="";
+            let tex2="";
+            for (var i=0; i<listaEle.length; i++){
+                tex1+=listaEle[i].mostrar();
+                tex2+=listaObj[i].mostrar();
+
+            }
+            document.getElementById('t1').innerHTML=tex1;
+            document.getElementById('t2').innerHTML=tex2;
+        }
+
+        /*function cargar() {
+            let no=document.getElementById('nom').value;
+            let ed=document.getElementById('edad').value;
+            let di=document.getElementById('dir').value;
+            let ele=new elemento(no,ed,di);
+            let obja=obj;
+            obja.nom=no;
+            obja.edad=ed;
+            obja.dir=di;
+            document.getElementById('t1').innerHTML=ele.mostrar();
+            document.getElementById('t2').innerHTML=obja.mostrar();
+            
+        }*/
+        class elemento{
+            constructor(v1,v2,v3){
+                this.nom=v1;
+                this.edad=v2;
+                this.dir=v3;
+            }
+            mostrar(){
+                return "<tr><td>"+this.nom+"</td><td>"+this.edad+"</td><td>"+this.dir+"</td></tr>";
+            }
+        }
+
+        var obj={
+            nom:"pedro",
+            edad:10,
+            dir:"su casa",
+            mostrar:function(){
+                return "<tr><td>"+this.nom+"</td><td>"+this.edad+"</td><td>"+this.dir+"</td></tr>";
+            }
+        };
+
+                
+    </script>
+</body>
+</html>
