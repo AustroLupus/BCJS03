@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="ejemplo"></h1>
+    <script type="text/javascript">
+        setInterval(hora,1000);
+        let fecha=new Date();
+        let cont=fecha.getFullYear();
+        cont=cont+"-"+(fecha.getMonth()+1);
+        cont=cont+"-"+fecha.getDate();
+        function hora(){
+            let dia=new Date();
+            let tex=cont+" // "+dia.getHours()+":"+dia.getMinutes()+":"+dia.getSeconds();
+            document.getElementById('ejemplo').innerHTML=tex;
+        }
+    </script>
+</body>
+</html>

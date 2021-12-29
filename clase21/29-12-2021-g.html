@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script type="text/javascript">
+        function interface(some){
+            document.getElementById('demo').innerHTML=some;
+        }
+
+        let promesa=new Promise(function(myResolve,myReject){
+            let req=new XMLHttpRequest();
+            req.open('GET','otra.html');
+            req.onload=function(){
+                if (req.status==200){
+                    myResolve(req.response);
+                }else{
+                    myReject("error, archivo no encontrado");
+                }
+            }
+            req.send();
+        });
+
+        promesa.then(
+            function(value){
+                interface(value);
+            },
+            function(error){
+                interface(error);
+            }
+        );
+    </script>
+</body>
+</html>

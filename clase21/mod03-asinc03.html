@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boton y Promise</title>
+    <style>
+        code{
+            color:#C9F227;
+        }
+    </style>
+</head>
+<body>
+    <div class="container rounded-3 p-3 mb-2 bg-success bg-gradient text-white">
+        <h1 class="text-center">Cargar una página nueva con <code>Promise();</code></h1><br>
+        <button class="btn btn-warning" name="botoncillo" id="botoncillo" onclick="mostrar();">Llamar</button><br><br>
+        <div class="container rounded bg-white text-black">
+            <p id="insertado">Acá va a ir texto</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var presionado=0;
+        function mostrar(){
+            console.log("entre en mostrar, presionado = "+presionado);
+            if(presionado){ //presionado comeinza en 0, y 0 es false...
+                alert("El boton ya fue presionado")
+                console.log("Entre en el if");
+
+            }else{
+                console.log("Entre en el if");
+                presionado=1; //convierte a presionado en 1, y 1 es true...
+                document.getElementById('botoncillo').disabled=true;
+                document.getElementById('botoncillo').innerHTML="En 3";
+                setTimeout(enDos,1000);
+                setTimeout(enUno,2000);
+                setTimeout(enCero,3000);
+                function enDos(){
+                    console.log("fn en 2");
+                    document.getElementById('botoncillo').innerHTML="En 2";
+                }
+                function enUno(){
+                    console.log("fn en 1");
+                    document.getElementById('botoncillo').innerHTML="En 1";
+                }
+                function enCero(){
+                    console.log("fn en 0");
+                    document.getElementById('botoncillo').innerHTML="Cargando página";
+                    document.getElementById('botoncillo').disabled=false;
+                    function interface1(some){
+                        console.log("dentro de fn interface1")
+                        document.getElementById('insertado').innerHTML=some;
+                    }
+                    let promesa1=new Promise(function(myResolve,myReject){
+                        let req=new XMLHttpRequest();
+                        req.open('GET','callback_mod03-asinc03.html');
+                        req.onload=function(){
+                            if (req.status==200){
+                                console.log("XMLHttpRequest Status = "+req.status);
+                                myResolve(req.response);
+                            }else{
+                                console.log("XMLHttpRequest Status = "+req.status);
+                                myReject("Error 404, archivo no encontrado!");
+                            }
+                        }
+                        req.send();
+                    });
+                    promesa1.then(
+                        function(value){
+                            interface1(value);
+                        },
+                        function(error){
+                            interface1(error);
+                        }
+                    );
+                }
+            }
+        }
+    </script>
+</body>
+<!--
+OK Implemente en una nueva pagina web un boton
+OK el cual se utilizara para dar la accion de cargar una web
+OK la cual se mostrara con un tiempo de espera
+OK y se implementará con la funcion "promise" en un contenedor de codigo html.
+OK Esta implementacion debera agregar estilos css pudiendo ser de Bootstraps o de manera manual.
+-->
+</html>
