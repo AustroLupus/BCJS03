@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejemplo Async - Await</h1>
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+        function retornoPromesa(){
+            return new Promise((resolve,reject)=>{
+                    let req= new XMLHttpRequest();
+                    req.open('GET','otrab.html');
+                    req.onload=function(){
+                    if(req.status==200){
+                        resolve(req.response);
+                    }else{
+                        resolve("error, archivo no encontrado");
+                    }
+                };
+                req.send();
+            });
+        }
+        async function useAsync(){
+            var returnPromesa=await retornoPromesa();
+            document.getElementById('demo').innerHTML=returnPromesa;
+        }
+
+        useAsync();
+
+    </script> 
+</body>
+</html>
