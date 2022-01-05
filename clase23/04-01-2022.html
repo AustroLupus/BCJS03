@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ry & catch</h1>
+    <br>
+    n° 1: <input type="text" name="v1" id="v1"><br>
+    n° 2: <input type="text" name="v2" id="v2"><br>
+    <button onclick="sumar();">calcular</button><br>
+    resultado :<input type="text" name="res" id="res"><br>
+    <script type="text/javascript">
+        function sumar(){
+            let v1=document.getElementById('v1').value;
+            let v2=document.getElementById('v2').value;
+            try{
+                let vv1=parseInt(v1);
+                let vv2=parseInt(v2);
+                let res=vv1+vv2;
+                document.getElementById('res').value=res;
+                if(isNaN(res)){
+                    throw("No es numero");
+                    //throw new TypeError("error de valor no numerico...!!!");
+                }
+            }catch(err){
+                alert("error: "+err);
+            }finally{
+                alert("Ejecucion del final");
+            }
+        }
+
+    </script>
+</body>
+</html>

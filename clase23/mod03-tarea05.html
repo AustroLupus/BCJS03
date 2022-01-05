@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try & Catch</title>
+</head>
+<body>
+    <h1>Prueba de error</h1><br>
+    Ingrese Nombre: <input type="text" id="nombre" name="nombre"><br>
+    Ingrese edad: <input type="text" id="edad" name="edad"><br>
+    Ingrese email: <input type="text" id="emilio" name="emilio"><br>
+    <br>
+    <button onclick="comprobar();">Validar datos</button>
+
+    <script type="text/javascript">
+        function comprobar(){
+            let nombre=document.getElementById('nombre').value;
+            let edad=document.getElementById('edad').value;
+            let emilio=document.getElementById('emilio').value;
+            try{
+                let e=parseInt(edad);
+                if(isNaN(e)){
+                    throw "la edad debe ser un numero";
+                }else if(nombre!="" && emilio!="" && edad>0){
+                    alert("Datos conforme");
+                }else{
+                    throw "faltan datos";
+                }
+            }catch(er){
+                alert("Advertencia, "+er);
+            }
+            checkNombre(nombre);
+        }
+        function checkNombre(v1){
+            try{
+                if (typeof v1 === 'string' || v1 instanceof String){
+                    throw "El nombre no puede ser un numero";
+                }else{
+                    let o=1;
+                }
+            }catch(erNom){
+                alert(erNom);
+            }
+        }
+    </script>
+
+
+</body>
+</html>

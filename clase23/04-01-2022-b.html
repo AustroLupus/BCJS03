@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    n° 1: <input type="text" name="v1" id="v1"><br>
+    n° 2: <input type="text" name="v2" id="v2"><br>
+    <button onclick="sumar();">calcular</button><br>
+    resultado :<input type="text" name="res" id="res"><br>
+
+    <script type="text/javascript">
+        function sumar(){
+            let v1=document.getElementById('v1').value;
+            let v2=document.getElementById('v2').value;
+            let op="s";
+            let res;
+            while(op=="s"){
+                try{
+                    let vv1=parseInt(v1);
+                    let vv2=parseInt(v2);
+                    res=vv1+vv2;
+                    if(isNaN(res)){
+                        throw("error de dato no numerico");
+                    }
+                    document.getElementById('res').value=res;
+                }catch(ex){
+                    alert("Error :"+ex);
+                }finally{
+                    if(!isNaN(res)){
+                        alert("Operacion exitosa");
+                        op="n";
+                    }else{
+                        alert("Error dentro de la operacion");
+                        v1=prompt("Ingrese valor 1");
+                        v2=prompt("Ingrese valor 2");
+                        document.getElementById('v1').value=v1;
+                        document.getElementById('v2').value=v2;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

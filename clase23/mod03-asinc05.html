@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Validando con Try & Catch</title>
+</head>
+<body>
+    <div class="container rounded-3 pt-5 bg-success text-white bg-gradient">
+        <div class="text-center">
+            <h1>Datos de ingreso</h1><br><br>
+        </div>
+        <div class="row input-group">
+            <div class="col">
+                <label class="form-label" for="nombre">Nombre</label><br>
+                <input class="rounded-1 form-control" type="text" name="nombre" id="nombre"><br>
+            </div>
+            <div class="col">
+                <label class="form-label" for="precio">Valor Unitario</label><br>
+                <input class="rounded-1 form-control" type="text" name="precio" id="precio"><br>
+            </div>
+            <div class="col">
+                <label class="form-label" for="cantidad">Cantidad</label><br>
+                <input class="rounded-1 form-control" type="text" name="cantidad" id="cantidad"><br>
+            </div>
+            <div class="col fw-bold">
+                <label class="form-label" for="total">Total</label><br>
+                <input class="rounded-1 form-control fw-bolder" readonly type="text" name="total" id="total"><br>
+            </div>
+        </div>
+        <div class="text-center row">
+            <div class="col">
+                <button class="btn btn-warning" onclick="validar();" id="botoncillo">Calcular total</button>
+            </div>
+        </div><br>
+    </div>
+    <script type="text/javascript">
+        
+        function validar(){
+            console.log("dentro de validar");
+            let nombre=document.getElementById('nombre').value;
+            let precio=parseInt(document.getElementById('precio').value);
+            let cantidad=parseInt(document.getElementById('cantidad').value);
+            document.getElementById('botoncillo').disabled=true;
+            try{
+                if(isNaN(precio)||isNaN(cantidad)){
+                    console.log("En if NaN");
+                    console.log("Precio: "+precio+" Candidad: "+cantidad);
+                    throw "Precio y cantidad solo deben ser numeros";
+                }else{
+                    console.log("else de todo bien");
+                    document.getElementById('total').value=precio*cantidad;
+                }
+            }
+            catch(err){
+                if(isNaN(precio)&&isNaN(cantidad)){
+                    console.log("error en precio y cantidad");
+                    document.getElementById('precio').className="rounded-1 form-control fw-bolder text-white bg-danger";
+                    document.getElementById('cantidad').className="rounded-1 form-control fw-bolder text-white bg-danger";
+                }else if(isNaN(precio)){
+                    console.log("error en precio");
+                    document.getElementById('precio').className="rounded-1 form-control fw-bolder text-white bg-danger";
+                }else{
+                    console.log("error en cantidad");
+                    document.getElementById('cantidad').className="rounded-1 form-control fw-bolder text-white bg-danger";
+                }
+                //document.getElementById('botoncillo').disabled=true;
+                alert(err);
+            }finally{
+                setTimeout(limpiar,5000);
+                function limpiar(){
+                    document.getElementById('nombre').value="";
+                    document.getElementById('precio').value="";
+                    document.getElementById('cantidad').value="";
+                    document.getElementById('total').value="";
+                    document.getElementById('precio').className="rounded-1 form-control";
+                    document.getElementById('cantidad').className="rounded-1 form-control";
+                    document.getElementById('botoncillo').disabled=false;
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
