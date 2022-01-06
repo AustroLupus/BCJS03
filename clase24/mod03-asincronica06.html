@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea Asincronica</title>
+</head>
+<body>
+    <h1>Tarea Asincronica</h1><br>
+    <p id="insercion"></p><br>
+
+    <script type="text/javascript">
+        function reqListener(){
+            document.getElementById('insercion').innerHTML=this.responseText;
+        }
+        var oreq= new XMLHttpRequest;
+        oreq.addEventListener("load",reqListener);
+        oreq.open("GET","otro_asincronica.html");
+        oreq.send();
+
+        function calcular(){
+            let v1=parseInt(document.getElementById('val').value);
+            let res=v1*0.19;
+            document.getElementById('resIva').innerHTML=res;
+            document.getElementById('resTotal').innerHTML=res+v1;
+        }
+
+    </script>
+</body>
+</html>

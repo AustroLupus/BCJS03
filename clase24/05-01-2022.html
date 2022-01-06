@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eujemplo Asincronico</title>
+</head>
+<body>
+<h1>Rest</h1>
+    <script type="text/javascript">
+        function reqListener(){
+            console.log(this.responseText);
+        }
+        var oreq= new XMLHttpRequest;
+        oreq.addEventListener("load",reqListener);
+        oreq.open("GET","http://www.mozilla.org");
+        oreq.send();
+    </script>
+
+</body>
+</html>
