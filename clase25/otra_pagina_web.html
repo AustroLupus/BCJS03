@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificacion Tarea Asincronica</title>
+</head>
+<body>
+    <h1>Verificacion Tarea Asincronica</h1>
+    <p>Data recuperada del URL :<span id="data"></span></p>
+    <br>
+    <h3>Volcado de datos de la data de la URL en cajones</h3>
+    Nombre: <input type="text" name="nombre" id="nombre" readonly><br>
+    RUT: <input type="text" name="RUT" id="RUT" readonly><br>
+    Email: <input type="text" name="email" id="email" readonly><br>
+    Fono: <input type="text" name="fono" id="fono" readonly><br>
+    <script type="text/javascript">
+        const recupera=window.location.search;
+        const dataRecibida=new URLSearchParams(recupera);
+        let data=dataRecibida.get('data');
+        document.getElementById('data').innerHTML=data;
+        const myData=JSON.parse(data);
+        console.log(myData);
+        document.getElementById('nombre').value=myData.nombre;
+        document.getElementById('RUT').value=myData.rut;
+        document.getElementById('email').value=myData.email;
+        document.getElementById('fono').value=myData.fono;
+
+    </script>
+</body>
+</html>

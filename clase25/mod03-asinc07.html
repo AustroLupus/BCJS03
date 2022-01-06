@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nombre: <input type="text" id="nombre" name="nombre"><br>
+    RUT: <input type="text" id="rut" name="rut"><br>
+    Email: <input type="text" id="email" name="email"><br>
+    Fono: <input type="text" id="fono" name="fono"><br>
+    <br>
+    <button onclick="enviarDatos();">Enviar datos</button>
+
+    <script type="text/javascript">
+        function enviarDatos(){
+            const myObj={}
+            console.log(myObj);
+            myObj.nombre=document.getElementById('nombre').value;
+            myObj.rut=document.getElementById('rut').value;
+            myObj.email=document.getElementById('email').value;
+            myObj.fono=document.getElementById('fono').value;
+            console.log(myObj);
+            const myObjJSON=JSON.stringify(myObj);
+            console.log(myObjJSON);
+            window.location="otra_pagina_web.html?data="+myObjJSON;
+        }
+    </script>
+
+
+
+</body>
+<!--
+    ok Implemente una pagina donde se implemente un formulario
+    ok de datos de una persona (nombre, rut, email, fono)
+    ok y estos datos sean enviados al servidor mediante JSON
+-->
+</html>

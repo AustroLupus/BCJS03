@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <h1>Mi primer JSON</h1>
+    <p id="js"></p>
+    <!--<p>
+        <button onclick="redirecciona();">ir</button>
+    </p>-->
+
+    <p>
+        <button onclick="redirecciona2();">ir a 2</button>
+    </p>
+
+    <script type="text/javascript">
+        const myObj={nom:"juan",edad:30,ciudad:"montevideo"};
+        const myJSON= JSON.stringify(myObj);
+        document.getElementById('js').innerHTML=myJSON;
+
+        function redirecciona(){
+            window.location="demo_json.php?x="+myJSON;
+        }
+        
+        function redirecciona2(){
+            window.location="06-01-2022-b.html?x="+myJSON+"&otro=64";
+        }
+
+    </script>
+</body>
+</html>
