@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Objetos con Prototipos</h1>
+    <p id="demo"></p>
+    <script type="text/javascript">
+        function prod(nombre,cantidad,valorun){
+            this.nombre=nombre;
+            this.cantidad=cantidad;
+            this.valorun=valorun;
+        }
+
+        let producto1= new prod("papas",5,500);
+        prod.prototype.total=function(){
+            let res=parseInt(this.cantidad)*parseInt(this.valorun);
+            return res;
+        };
+        document.getElementById('demo').innerHTML="total: "+producto1.total();
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Funciones con prototipos</h1>
+    <h3>ingreso de productos</h3>
+    <p>
+        ingrese nombre: <input type="text" name="nom" id="nom"><br>
+        ingrese cantidad: <input type="text" name="can" id="can"><br>
+        ingrese Valor unitario: <input type="text" name="vun" id="vun"><br>
+        <button onclick="ingresar();">Ingresar</button>
+    </p>
+    <p id="muestra"></p><br>
+    <button onclick="iva();">IVA</button><br>
+    <p id="iva"></p>
+
+    <script type="text/javascript">
+        let lista=[];
+        function iva(){
+            obj.prototype.ivva=function(){
+                let monto=this.total()*0.19;
+                return monto;
+            };
+            let sumaiva=0;
+            let sumatotal=0;
+            let neto=0;
+            for (var i=0; i<lista.length;i++){
+                sumaiva+=lista[i].ivva();
+                sumatotal+=lista[i].total();
+            }
+            neto=sumatotal+sumaiva;
+            let txt="Bruto: "+sumatotal+"<br>";
+            txt+="IVA :"+sumaiva+"<br>";
+            txt+="Neto :"+neto+"<br>";
+            document.getElementById('iva').innerHTML=txt;
+        }
+
+        function ingresar(){
+            let no=document.getElementById('nom').value;
+            let ca=document.getElementById('can').value;
+            let vu=document.getElementById('vun').value;
+            let ele=new obj(no,ca,vu);
+            lista.push(ele);
+            limpiar();
+            mostrar();
+        }
+        function obj(nombre,cantidad,valorun){
+            this.nombre=nombre;
+            this.cantidad=cantidad;
+            this.valorun=valorun;
+            this.total=function(){
+                let rea=parseInt(this.cantidad)*parseInt(this.valorun);
+                return rea;
+            };
+        }
+        function mostrar(){
+            let contenido="<table border ='1'>";
+            contenido+="<tr><td>nombre</td><td>cantidad</td><td>valor UN</td><td>total</td></tr>";
+            for (var i = 0; i <lista.length; i++) {
+				contenido+=  "<tr><td>"+lista[i].nombre+
+				"</td><td>"+lista[i].cantidad+
+				"</td><td>"+lista[i].valorun+
+				"</td><td>"+lista[i].total()+
+				"</td></tr>";
+            }
+            contenido+="</table>";
+            document.getElementById('muestra').innerHTML=contenido;
+
+        }
+        function limpiar(){
+            document.getElementById('nom').value="";
+            document.getElementById('can').value="";
+            document.getElementById('vun').value="";
+            document.getElementById('nom').focus();
+        }
+
+
+
+
+    </script>
+</body>
+</html>

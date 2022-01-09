@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea Asincronica Modulo 3 Clase 08</title>
+</head>
+<body>
+    <h1>Tarea Asincronica</h1>
+    Nombre : <input type="text" name="nombre" id="nombre" autofocus><br>
+    Valor : <input type="text" name="valor" id="valor"><br>
+    Cantidad : <input type="text" name="cantidad" id="cantidad"><br>
+    <p>Valor del pedido: <span id="insertado"></span></p>
+    <button onclick="calcular();" id="boton1">Calcular</button>
+    <button onclick="limpiar();" id="boton2" hidden>Limpiar</button>
+
+
+    <script type="text/javascript">
+        //construccion del objeto
+        function misDatos(nombre,valor,cantidad){
+            this.nombre=nombre;
+            this.valor=valor;
+            this.cantidad=cantidad;
+        }
+
+        //llamado a la funcion del boton
+        function calcular(){
+            document.getElementById('boton1').hidden=true; //oculta boton calcular
+            document.getElementById('boton2').hidden=false; //muestra boton limpiar
+            let nom=document.getElementById('nombre').value;
+            let val=parseInt(document.getElementById('valor').value);
+            let can=parseInt(document.getElementById('cantidad').value);
+            let calculaMisDatos = new misDatos(nom,val,can);
+            //llamada a la nueva funcion para hacer el calculo del total
+            misDatos.prototype.total= function(){
+                let valPedido= this.valor * this.cantidad;
+                console.log(valPedido);
+                return valPedido;
+            };
+            //muestra el valor, me quedé pegado porque habia usado .value en lugar de .innerHTML
+            document.getElementById('insertado').innerHTML=calculaMisDatos.total();
+
+
+
+        }
+        //limpia las casillas, oculta el boton mostrar y muestra el boton calcular
+        function limpiar(){
+            document.getElementById('nombre').value="";
+            document.getElementById('valor').value="";
+            document.getElementById('cantidad').value="";
+            document.getElementById('nombre').focus();
+            document.getElementById('boton1').hidden=false;
+            document.getElementById('boton2').hidden=true;
+        }
+
+    </script>
+
+</body>
+<!--
+    ok Implemente una pagina web
+    ok donde se ingresen los datos de un producto mediante input’s(nombre, valor, cantidad)
+    ok y con una función javascript cree un objeto,
+    ok con un botón extra implemente otra función javascript
+    ok con la cual agregue una función la cual me
+    ok entregue el valor del pedido del producto.
+-->
+</html>

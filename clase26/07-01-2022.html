@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos con Prototipos</title>
+</head>
+<body>
+    <h1>Objetos con Prototipos</h1>
+    <p id="demo"></p>
+    <script type="text/javascript">
+        function person(nombre,apellido,edad,c_ojo){
+            this.nombre=nombre;
+            this.apellido=apellido;
+            this.edad=edad;
+            this.c_ojo=c_ojo;
+        }
+        let papa=new person("juan","risopatron",45,"cafe");
+        let mama=new person("maria","lastarria",35,"azul");
+
+        papa.nacionalidad="italiano";
+        mama.name=function(){
+            return this.nombre.toUpperCase()+"<br>";
+        }
+
+        let txt="mama: "+mama.nombre+" "+mama.apellido+"<br>";
+        txt+="color de ojos mama: "+mama.c_ojo+"<br>"
+        txt+="funcion nombre: "+mama.name();
+        txt+="papa: "+papa.nombre+" "+papa.apellido+"<br>";
+        txt+="color de ojos papa: "+papa.c_ojo+"<br>"
+        txt+="nacionalidad papa: "+papa.nacionalidad+"<br>";
+        document.getElementById('demo').innerHTML=txt;
+        console.log("mama "+mama);
+        console.log("papa "+papa);
+    </script>
+</body>
+</html>

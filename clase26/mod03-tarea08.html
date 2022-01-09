@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea en clases Mod 3 clase 8</title>
+</head>
+<body>
+    <h1>Tarea en Clases</h1>
+    <h2>Ingrese los datos de la persona</h2>
+    <p>
+        Nombre: <input type="text" id="nombre" name="nombre"><br>
+        Edad: <input type="text" id="edad" name="edad"><br>
+        Profesion: <input type="text" id="profesion" name="profesion"><br>
+        Email: <input type="text" id="email" name="email"><br>
+    </p>
+    <button onclick="cargar();">Cargar datos</button><br>
+    <p>
+        <h2>Valores Obtenidos</h2>
+        Nombre: <input readonly type="text" id="nombre2" name="nombre2"><br>
+        Edad: <input readonly type="text" id="edad2" name="edad2"><br>
+        Profesion: <input readonly type="text" id="profesion2" name="profesion2"><br>
+        Email: <input readonly type="text" id="email2" name="email2"><br>
+    </p>
+    <button onclick="limpiar();">Limpiar campos</button>
+
+    <script type="text/javascript">
+        //creacion del objeto prototipo
+        function persona(nombre,edad,profesion){
+            this.nombre=nombre;
+            this.edad=edad;
+            this.profesion=profesion;
+        }
+        /*persona.prototype.email=function(email){
+            this.email=email;
+            //return this.email;
+        };*/
+        
+        function cargar(){
+            //rescate de los valores
+            let nom=document.getElementById('nombre').value;
+            let eda=document.getElementById('edad').value;
+            let pro=document.getElementById('profesion').value;
+            let ema=document.getElementById('email').value;
+            //creacion en base al prototipo
+            const nuevaPersona=new persona(nom,eda,pro);
+            persona.prototype.email=ema;
+            //llenado de las cajas con los datos recuperados
+            document.getElementById('nombre2').value=nuevaPersona.nombre;
+            document.getElementById('edad2').value=nuevaPersona.edad;
+            document.getElementById('profesion2').value=nuevaPersona.profesion;
+            document.getElementById('email2').value=nuevaPersona.email;
+        }
+        function limpiar(){
+            document.getElementById('nombre').value="";
+            document.getElementById('edad').value="";
+            document.getElementById('profesion').value="";
+            document.getElementById('email').value="";
+            document.getElementById('nombre2').value="";
+            document.getElementById('edad2').value="";
+            document.getElementById('profesion2').value="";
+            document.getElementById('email2').value="";
+        }
+
+    </script>
+
+</body>
+<!--
+    Desarrolle una pagina web
+    donde se ingresen datos de una persona
+    (nombre, edad, profesion)
+    y llene el objeto
+    y posteriormente le agregue un atributo extra (mail)
+-->
+</html>
