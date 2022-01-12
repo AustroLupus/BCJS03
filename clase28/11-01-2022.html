@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumatoria y Factorial</title>
+</head>
+<body>
+    <h1>Sumatoria & Factorial</h1>
+    <button onclick="sumatoria();">Sumatoria</button><br>
+    <p id="sum"></p>
+    <button onclick="factorial();">Factorial</button><br>
+    <p id="fac"></p>
+    <button onclick="mostrar();">Mostrar matriz</button><br>
+    <p id="mmat"></p>
+    <button onclick="smat();">Suma matriz</button><br>
+    <p id="smat"></p>
+
+    <script type="text/javascript">
+        let matriz=[
+            [23,65,98],
+            [98,34,12],
+            [61,82,51],
+        ];
+        function mostrar(){
+            let tex="<table border='1'>";
+            for (let i=0; i<3;i++){
+                tex+="<tr>";
+                for (let j=0;j<3;j++){
+                    tex+="<td>"+matriz[i][j]+"</td>";
+                }
+                tex+="</tr>";
+            }
+            tex+="</table>";
+            document.getElementById('mmat').innerHTML=tex;
+        }
+        function smat(){
+            let sum=0;
+            for (let i=0; i<3;i++){
+                for (let j=0;j<3;j++){
+                    sum+=matriz[i][j];
+                }
+            }
+            document.getElementById('smat').innerHTML=sum;
+        }
+
+        function sumatoria(){
+            let num=10;
+            let val=0;
+            let tex="<table border='1'>";
+            let linea="";
+            for(var i=1;i<=num;i++){
+                linea+=i;
+                val=val+i;
+                tex+="<tr><td>"+linea+"=</td><td>"+val+"</td></tr>";
+                linea+="+";
+            }
+            tex+="</table>";
+            document.getElementById('sum').innerHTML=tex;
+        }
+        function factorial(){
+            let num=10;
+            let val=1;
+            let tex="<table border='1'>";
+            let linea="";
+            for(var i=1;i<=num;i++){
+                linea+=i;
+                val=val*i;
+                tex+="<tr><td>"+linea+"=</td><td>"+val+"</td></tr>";
+                linea+="*";
+            }
+            tex+="</table>";
+            document.getElementById('fac').innerHTML=tex;
+        }
+    </script>
+
+</body>
+</html>

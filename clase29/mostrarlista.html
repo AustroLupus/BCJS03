@@ -1,0 +1,33 @@
+<br>
+<button class="btn btn-dark" onclick="mostrarLista();">Mostrar Listado</button>
+<br><br>
+
+<div class="container row">
+  <div class="col">
+    <label for="nommod" class="form-label">Nombre del elemento a modificar</label>
+    <input name="nommod" id="nommod" type="text" class="form-control"><br>
+    <label for="cantmod" class="form-label">Cantidad a reemplazar</label>
+    <input name="cantmod" id="cantmod" type="text" class="form-control"><br>
+    <button class="btn btn-warning" onclick="modifica();">Modificar cantidad</button>
+    <br><br>
+  </div>
+  <div class="col">
+    <label for="nomeli" class="form-label">Nombre del elemento a Eliminar</label>
+    <input name="nomeli" id="nomeli" type="text" class="form-control"><br>
+    <button class="btn btn-danger" onclick="eliminar();">Eliminar producto</button>
+    <br><br>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Indice</th>
+      <th>Nombre producto</th>
+      <th>Valor Unitario</th>
+      <th>Cantidad</th>
+    </tr>
+  </thead>
+  <tbody id="tablaListado">
+  </tbody>
+</table>

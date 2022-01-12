@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Burbuja 2</h1>
+    <button onclick="mostrar();">Mostrar ordenado</button>
+    <button onclick="ordenar();">Ordenar</button>
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+        let lista=[8,5,2,3,9,7,6,4,1];
+        function ordenar(){
+            let i,k,aux;
+            let largoLista=lista.length;
+            for (k=1; k<largoLista;k++){
+                for(i=0; i<(largoLista-k);i++){
+                    if (lista[i]>lista[i+1]){
+                        aux=lista[i];
+                        lista[i]=lista[i+1];
+                        lista[i+1]=aux;
+                    }
+                    mostrar();
+                    console.log('k: '+k+' // i: '+i+' // '+lista[i]+'  > ' +lista[i+1]+"? "+(lista[i]  > lista[i+1]));
+                }
+            }
+        }
+
+        function mostrar(){
+            let tex="<table border='1'>";
+            for (let i=0;i<lista.length;i++){
+                tex+="<tr><td>";
+                tex+=lista[i];
+                tex+="</tr></td>";
+            }
+            tex+="</table>";
+            document.getElementById('demo').innerHTML=tex;
+        }
+
+
+    </script>
+</body>
+</html>
